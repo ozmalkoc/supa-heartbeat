@@ -1,0 +1,14 @@
+name: Keep Supabase Active
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Her gün UTC 9:00 (TR saati ~12:00)
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Ping Supabase
+      run: |
+        curl -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/your_table?select=*" \
+          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
