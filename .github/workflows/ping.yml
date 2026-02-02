@@ -1,4 +1,4 @@
-name: Keep Supabase Active
+name: Keep Supabase Active 
 on:
   schedule:
     - cron: '0 9 * * *'  # Her gün UTC 9:00 (TR saati ~12:00)
@@ -12,3 +12,4 @@ jobs:
         curl -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/tbl_companies?select=*" \
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
+# 60 gün sonra duruyormuş ama :[
